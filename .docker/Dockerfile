@@ -63,7 +63,7 @@ USER root
 
 COPY --from=setup /var/www/html /var/www/html
 
-COPY --from=static-assets /app/public/build/* /var/www/html/public/build
+COPY --from=static-assets /app/public/build /var/www/html/public/build
 
 RUN chown -R www-data:www-data /var/www/html
 
