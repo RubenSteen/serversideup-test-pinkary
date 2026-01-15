@@ -1,6 +1,7 @@
 # docker compose -f docker-compose-production.yml up -d --build
 services:
   app:
+    image: my-php-app:latest
     build:
       context: .
       dockerfile: .docker/Dockerfile
@@ -17,8 +18,7 @@ services:
     volumes:
       - '.env:/var/www/html/.env:ro'
       - 'storage_data:/var/www/html/storage'
-      - 'vendor_data:/var/www/html/vendor'
+  
 volumes:
   storage_data:
-  vendor_data:
 
