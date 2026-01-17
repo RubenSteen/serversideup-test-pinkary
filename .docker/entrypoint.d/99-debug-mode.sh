@@ -1,3 +1,4 @@
+#!/bin/sh
 # Debug mode
 if [ "$APP_DEBUG" = "true" ]; then
     echo "Debug mode is enabled"
