@@ -15,8 +15,8 @@ RUN install-php-extensions intl bcmath gd imagick
 # =================================================================
 FROM base AS development
 
-ARG USER_ID=1000
-ARG GROUP_ID=1000
+ARG USER_ID=33
+ARG GROUP_ID=33
 
 USER root
 
@@ -31,8 +31,6 @@ USER www-data
 FROM base AS setup
 
 USER root
-
-COPY --chmod=755 ./.docker/entrypoint.d/ /etc/entrypoint.d/
 
 COPY . /var/www/html
 
@@ -58,6 +56,8 @@ RUN npm run build
 FROM base AS deployment
 
 USER root
+
+COPY --chown=$USER_ID:$GROUP_ID --chmod=755 ./.docker/entrypoint.d/ /etc/entrypoint.d/
 
 COPY --from=setup /var/www/html /var/www/html
 

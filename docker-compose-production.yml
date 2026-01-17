@@ -1,4 +1,4 @@
-# docker compose -f docker-compose-production.yml up -d --build
+# docker compose -f docker-compose-production.yml up --build
 services:
   app:
     image: my-php-app:latest
@@ -17,8 +17,5 @@ services:
       PHP_UPLOAD_MAX_FILE_SIZE: "10M" # The maximum size of an uploaded file. (https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) DEFAULT 10M
     volumes:
       - '.env:/var/www/html/.env:ro'
-      - 'storage_data:/var/www/html/storage'
-  
-volumes:
-  storage_data:
+      - './data/storage:/var/www/html/storage'
 
