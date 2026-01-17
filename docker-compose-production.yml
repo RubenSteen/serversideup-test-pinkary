@@ -17,5 +17,5 @@ services:
       PHP_UPLOAD_MAX_FILE_SIZE: "10M" # The maximum size of an uploaded file. (https://www.php.net/manual/en/ini.core.php#ini.upload-max-filesize) DEFAULT 10M
     volumes:
       - '.env:/var/www/html/.env:ro'
-      - './data/storage:/var/www/html/storage'
+      - './.docker/data/storage:/var/www/html/storage'
 
